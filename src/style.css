@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #242424;
+}
+
+:root {
+  --swiper-navigation-color: white;
+  --swiper-pagination-color: white;
+}
+
+.swiper {
+  width: 90%;
+  height: 600px;
+  z-index: 0;
+}
+
+.swiper-slide {
+  position: relative;
+  filter: none;
+  transition: filter 0.3s ease-out;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none;
+  transition: filter 0.3s ease-out;
+}
+
+.swiper-wrapper:hover img{
+  filter: blur(3px);
+  transition: filter 0.5s ease-in-out;
+}
+
+.swiper-pagination:hover .swiper-wrapper img{
+  filter: blur(3px);
+  transition: filter 0.5s ease-in-out;
+}
+
+.swiper-slide:hover .card-content h2,
+.swiper-slide:hover .card-content h3 {
+  transform: scale(1.1);
+  transition: transform 0.5s ease-in-out;
+}
+
+.card-content {
+  position: absolute;
+  top: 50%; /* Plaatst de stadnaam verticaal gecentreerd */
+  left: 50%; /* Plaatst de stadnaam horizontaal gecentreerd */
+  transform: translate(-50%, -50%); /* Corrigeert de verschuiving om precies te centreren */
+  z-index: 1; /* Zorgt dat het boven de afbeelding ligt */
+  color: white; /* Zorg dat de tekst zichtbaar is */
+  text-align: center;
+  margin-bottom: 20px; /*geen idee of het werkt */
+}
+
+.card-content h2 {
+  font-family: Roboto;
+  font-size: 80px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transform: scale(1); 
+  transition: transform 0.5s ease-out;
+}
+
+.card-content h3 {
+  font-family: Inter;
+  letter-spacing: 5px;
+  text-shadow: 2px;
+  font-size: 15px;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin-top: -10px;
+  transform: scale(1); 
+  transition: transform 0.5s ease-out;
+  /*margin-top: 10px;*/
+  margin-top: 3px;
+  margin-bottom: 20px;
+}
+
+.stadnaam {
+  margin: 0; /* Verwijdert standaard marges */
+}
+
+.temperatuur {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  background: white; 
+  padding: 8px 12px;
+  border-radius: 20px;
+  margin-top: 30px;
+  display: inline-block;
+}
+
