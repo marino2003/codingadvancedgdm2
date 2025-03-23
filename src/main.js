@@ -56,7 +56,7 @@ const geolocationOptions = {
 };
 
 
-const swiper = new Swiper('.swiper', {
+new Swiper('.swiper', {
   modules: [Navigation, Pagination],
     // Optional parameters
     direction: 'horizontal',
