@@ -1,57 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="public/img/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hoofdsteden in de Wereld</title>
+    <title>Mijn Aarde Met Steden</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #1e1e1e;
+      }
+      canvas {
+        border: 2px solid white;
+        background: #2a2a2a;
+      }
+    </style>
   </head>
   <body>
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="public/img/Parijs.webp"/>
-          <div class="card-content">
-            <h2 class="stadnaam">Parijs</h2>
-            <h3 class="continent">Frankrijk, Europa</h3>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <img src="public/img/Tokio.webp"/>
-          <div class="card-content">
-            <h2 class="stadnaam">Tokio</h2>
-            <h3 class="continent">Japan, Azië</h3>
-          </div>
-        </div><div class="swiper-slide">
-          <img src="public/img/New York 2.jpeg"/>
-          <div class="card-content">
-            <h2 class="stadnaam">New York City</h2>
-            <h3 class="continent">Verenigde Staten, Noord-Amerika</h3>
-          </div>
-        </div><div class="swiper-slide">
-          <img src="public/img/Kaapstad.jpeg"/>
-          <div class="card-content">
-            <h2 class="stadnaam">Kaapstad</h2>
-            <h3 class="continent">Zuid-Afrika, Afrika</h3>
-          </div>
-        </div><div class="swiper-slide">
-          <img src="public/img/Buenos-Aires.webp"/>
-          <div class="card-content">
-            <h2 class="stadnaam">Buenos Aires</h2>
-            <h3 class="continent">Argentinië, Zuid-Amerika</h3>
-          </div>
-        </div>
-      </div>
-      <!-- If we need pagination -->
-      <div class="swiper-pagination"></div>
-    
-      <!-- If we need navigation buttons -->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    
-      <!-- If we need scrollbar -->
-      <div class="swiper-scrollbar"></div>
-    </div>
-    <script type="module" src="/src/main.js"></script>
+    <canvas id="earthCanvas" width="800" height="800"></canvas>
+    <script type="module" src="/src/main.js"></script> <!-- Dit is je entry-point -->
   </body>
 </html>

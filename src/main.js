@@ -5,6 +5,8 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import './aarde.js';
+import * as THREE from 'three';
 
 //API key en seden const om op te halen
 const apiKey = import.meta.env.VITE_WEER_API;
