@@ -1,103 +1,287 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+}
+
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: #242424;
+    font-family: 'Inter', sans-serif;
+    background-color: #1a1f24;
+    color: #e5e7eb;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-:root {
-  --swiper-navigation-color: white;
-  --swiper-pagination-color: white;
+.layout-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
 }
 
-.swiper {
-  width: 90%;
-  height: 600px;
-  z-index: 0;
+.container {
+    flex-grow: 1;
+    width: calc(100% - 350px); /* Dynamische breedte */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centreer inhoud verticaal */
+    gap: 2rem;
+    padding: 2rem 1rem;
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
 }
 
-.swiper-slide {
-  position: relative;
-  filter: none;
-  transition: filter 0.3s ease-out;
+.main-header {
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
 }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: none;
-  transition: filter 0.3s ease-out;
+.main-header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
 }
 
-.swiper-wrapper:hover img{
-  filter: blur(3px);
-  transition: filter 0.5s ease-in-out;
+.main-header p {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    color: #9ca3af;
+    font-weight: 300;
 }
 
-.swiper-pagination:hover .swiper-wrapper img{
-  filter: blur(3px);
-  transition: filter 0.5s ease-in-out;
+.canvas-container {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.swiper-slide:hover .card-content h2,
-.swiper-slide:hover .card-content h3 {
-  transform: scale(1.1);
-  transition: transform 0.5s ease-in-out;
+#earthCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(135, 206, 250, 0.2), 0 5px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    /* Ensure canvas is visible */
+    opacity: 1;
 }
 
-.card-content {
-  position: absolute;
-  top: 50%; /* Plaatst de stadnaam verticaal gecentreerd */
-  left: 50%; /* Plaatst de stadnaam horizontaal gecentreerd */
-  transform: translate(-50%, -50%); /* Corrigeert de verschuiving om precies te centreren */
-  z-index: 1; /* Zorgt dat het boven de afbeelding ligt */
-  color: white; /* Zorg dat de tekst zichtbaar is */
-  text-align: center;
-  margin-bottom: 20px; /*geen idee of het werkt */
+.main-footer {
+    text-align: center;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 900px;
 }
 
-.card-content h2 {
-  font-family: Roboto;
-  font-size: 80px;
-  font-weight: bold;
-  text-transform: uppercase;
-  transform: scale(1); 
-  transition: transform 0.5s ease-out;
+.main-footer p {
+    font-size: 0.85rem;
+    color: #6b7280;
+    font-weight: 300;
 }
 
-.card-content h3 {
-  font-family: Inter;
-  letter-spacing: 5px;
-  text-shadow: 2px;
-  font-size: 15px;
-  font-weight: normal;
-  text-transform: uppercase;
-  margin-top: -10px;
-  transform: scale(1); 
-  transition: transform 0.5s ease-out;
-  /*margin-top: 10px;*/
-  margin-top: 3px;
-  margin-bottom: 20px;
+.info-display-panel {
+    width: 350px;
+    flex-shrink: 0;
+    height: 100vh;
+    background-color: #20252a;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    overflow-y: auto;
+    color: #e5e7eb;
+    position: sticky;
+    top: 0;
 }
 
-.stadnaam {
-  margin: 0; /* Verwijdert standaard marges */
+.panel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.temperatuur {
-  font-family: Inter, sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  color: black;
-  background: white; 
-  padding: 8px 12px;
-  border-radius: 20px;
-  margin-top: 30px;
-  display: inline-block;
+.panel-content h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
 }
 
+.panel-content p {
+    font-size: 1rem;
+    color: #d1d5db;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.9;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.image-gallery img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+    .layout-wrapper {
+        flex-direction: column;
+    }
+    .container {
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        order: 1;
+        justify-content: flex-start; /* Align top */
+    }
+    .info-display-panel {
+        width: 100%;
+        height: auto;
+        max-height: 50vh;
+        position: relative;
+        order: 2;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        position: static; /* Reset sticky */
+    }
+    .canvas-container {
+         max-width: 500px;
+         margin-left: auto;
+         margin-right: auto;
+    }
+}
+
+@media (max-width: 480px) {
+     .container { padding: 1.5rem 0.5rem; gap: 1.5rem; }
+    .canvas-container { max-width: 85vw; }
+     .info-display-panel { padding: 1.5rem; max-height: 60vh; }
+     .panel-content h2 { font-size: 1.5rem; }
+     .panel-content p { font-size: 0.9rem; }
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 3; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    transition: opacity 0.3s ease;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    position: relative;
+    background-color: #20252a;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+/* The Close Button */
+.close-button {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #aaa;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Content Styling (adjust as needed) */
+.modal-content h2 {
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.modal-content p {
+    font-size: 1rem;
+    color: #d1d5db;
+    line-height: 1.5;
+}
+
+/* Image Gallery in Modal */
+.modal-content .image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.modal-content .image-gallery img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.9;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal-content .image-gallery img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.city-image {
+    width: 200px;
+    height: 200px;
+}
